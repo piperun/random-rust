@@ -19,3 +19,15 @@ fn pow(num: u64, exp: u64, modulo: u64) -> u64 {
     }
     return result;
 }
+
+fn modexp(mut base: u64, mut exp: u64, modular: u64) -> u64 {
+    let mut result = 1;
+    while exp > 0 {
+        if exp % 2 == 1 {
+            result = (result * base) % modular as u64;
+        }
+        base = (base * base) % modular as u64;
+        exp = exp / 2;
+    }
+    result as u64
+}
